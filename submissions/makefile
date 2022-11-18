@@ -27,7 +27,7 @@ CC = g++
 CFLAGS = -DEVAL -std=gnu++11 -O2 -pipe -static -s
 
 
-# controllo build, genero il file di input, compilo ed eseguo
+# controllo che build esista, genero il file di input, compilo ed eseguo
 all: checkbuild $(INPUT_BUILD) exec
 
 
