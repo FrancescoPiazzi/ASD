@@ -62,54 +62,33 @@ void printTree(Tree<T> *tree, int lv){
 
 // depth first search pre-order
 template <typename T>
-std::vector<Tree<T>*> preOrderDFS(Tree<T> *tree){
-    std::vector<Tree<T>*> v;
-    realpreOrderDFS(tree, &v);
-    return v;
-}
-
-template <typename T>
-void realpreOrderDFS(Tree<T> *tree, std::vector<Tree<T>*> *v){
+void preOrderDFS(Tree<T> *tree, std::vector<Tree<T>*> *v){
     if(tree==NULL)
         return;
     v->push_back(tree);
-    realpreOrderDFS(tree->left, v);
-    realpreOrderDFS(tree->right, v);
+    preOrderDFS(tree->left, v);
+    preOrderDFS(tree->right, v);
 }
 
 
 // depth first search in-order
 template <typename T>
-std::vector<Tree<T>*> inOrderDFS(Tree<T> *tree){
-    std::vector<Tree<T>*> v;
-    realInOrderDFS(tree, &v);
-    return v;
-}
-
-template <typename T>
-void realInOrderDFS(Tree<T> *tree, std::vector<Tree<T>*> *v){
+void inOrderDFS(Tree<T> *tree, std::vector<Tree<T>*> *v){
     if(tree==NULL)
         return;
-    realInOrderDFS(tree->left, v);
+    inOrderDFS(tree->left, v);
     v->push_back(tree);
-    realInOrderDFS(tree->right, v);
+    inOrderDFS(tree->right, v);
 }
 
 
 // depth first search post-order
 template <typename T>
-std::vector<Tree<T>*> postOrderDFS(Tree<T> *tree){
-    std::vector<Tree<T>*> v;
-    realPostOrderDFS(tree, &v);
-    return v;
-}
-
-template <typename T>
-void realPostOrderDFS(Tree<T> *tree, std::vector<Tree<T>*> *v){
+void postOrderDFS(Tree<T> *tree, std::vector<Tree<T>*> *v){
     if(tree==NULL)
         return;
-    realPostOrderDFS(tree->left, v);
-    realPostOrderDFS(tree->right, v);
+    postOrderDFS(tree->left, v);
+    postOrderDFS(tree->right, v);
     v->push_back(tree);
 }
 
@@ -157,19 +136,19 @@ int main(){
     printTree(tree, 0);
 
     std::vector<Tree<float>*> v;
-    v = preOrderDFS(tree);
+    preOrderDFS(tree, &v);
     for(int i=0; i<5; i++){
         std::cout << v[i]->value << " ";
     }
     std::cout << std::endl;
 
-    v = inOrderDFS(tree);
+    inOrderDFS(tree, &v);
     for(int i=0; i<5; i++){
         std::cout << v[i]->value << " ";
     }
     std::cout << std::endl;
 
-    v = postOrderDFS(tree);
+    postOrderDFS(tree, &v);
     for(int i=0; i<5; i++){
         std::cout << v[i]->value << " ";
     }
