@@ -131,9 +131,11 @@ int main(){
     insertLeft<float>(tree->left, makeTree<float>(11111));
     insertRight<float>(tree->left, makeTree<float>(12345));
 
-    // printTree(tree, 0);
+    printTree(tree, 0);
+    std::cout << std::endl;
     invert(tree);
     printTree(tree, 0);
+    std::cout << std::endl;
 
     std::vector<Tree<float>*> v;
     preOrderDFS(tree, &v);
@@ -142,12 +144,14 @@ int main(){
     }
     std::cout << std::endl;
 
+    v.clear();
     inOrderDFS(tree, &v);
     for(int i=0; i<5; i++){
         std::cout << v[i]->value << " ";
     }
     std::cout << std::endl;
 
+    v.clear();
     postOrderDFS(tree, &v);
     for(int i=0; i<5; i++){
         std::cout << v[i]->value << " ";
