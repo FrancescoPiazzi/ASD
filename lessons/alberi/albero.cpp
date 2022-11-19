@@ -9,10 +9,6 @@ struct Tree{
 };
 
 
-template <typename T> 
-using NodeVector = std::vector<Tree<T>*>;
-
-
 // Costruisce un nuovo nodo, contenente value, senza figli o genitori
 template <typename T>
 Tree<T> *makeTree(T value){
@@ -120,7 +116,9 @@ void realPostOrderDFS(Tree<T> *tree, std::vector<Tree<T>*> *v){
 
 // all three depth first search
 template <typename T>
-void dfs(Tree<T> *tree, std::vector<Tree<T>*> *preOrder, std::vector<Tree<T>*> *inOrder, std::vector<Tree<T>*> *postOrder){
+void dfs(Tree<T> *tree, std::vector<Tree<T>*> *preOrder, 
+    std::vector<Tree<T>*> *inOrder, std::vector<Tree<T>*> *postOrder){
+
     if(tree==NULL)
         return;
 
