@@ -1,12 +1,4 @@
-#include <iostream>
-#include <vector>
-
-
-template <typename T> 
-struct Tree{ 
-    Tree *parent, *left, *right;
-    T value;
-};
+#include "albero.h"
 
 
 // Costruisce un nuovo nodo, contenente value, senza figli o genitori
@@ -119,59 +111,4 @@ void invert(Tree<T> *tree){
         invert(tree->left);
     if(tree->right != NULL)
         invert(tree->right);
-}
-
-
-int main(){
-    Tree<float>* tree = makeTree<float>(3.1415926);
-    insertLeft<float>(tree, makeTree<float>(2.71818));
-
-    insertRight<float>(tree, makeTree<float>(1000.1));
-
-    insertLeft<float>(tree->left, makeTree<float>(11111));
-    insertRight<float>(tree->left, makeTree<float>(12345));
-
-    printTree(tree, 0);
-    std::cout << std::endl;
-    invert(tree);
-    printTree(tree, 0);
-    std::cout << std::endl;
-
-    std::vector<Tree<float>*> v;
-    preOrderDFS(tree, &v);
-    for(int i=0; i<5; i++){
-        std::cout << v[i]->value << " ";
-    }
-    std::cout << std::endl;
-
-    v.clear();
-    inOrderDFS(tree, &v);
-    for(int i=0; i<5; i++){
-        std::cout << v[i]->value << " ";
-    }
-    std::cout << std::endl;
-
-    v.clear();
-    postOrderDFS(tree, &v);
-    for(int i=0; i<5; i++){
-        std::cout << v[i]->value << " ";
-    }
-    std::cout << std::endl;
-
-    std::cout << std::endl;
-
-    std::vector<Tree<float>*> v1, v2, v3;
-    dfs(tree, &v1, &v2, &v3);
-    for(int i=0; i<5; i++){
-        std::cout << v1[i]->value << " ";
-    }
-    std::cout << std::endl;
-    for(int i=0; i<5; i++){
-        std::cout << v2[i]->value << " ";
-    }
-    std::cout << std::endl;
-    for(int i=0; i<5; i++){
-        std::cout << v3[i]->value << " ";
-    }
-    std::cout << std::endl;
 }
